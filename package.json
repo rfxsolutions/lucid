@@ -46,7 +46,7 @@
     "@types/node": "^16.18.11",
     "autoprefixer": "^10.4.13",
     "jest": "^27.5.1",
-    "jest-cli": "^27.5.1",
+    "jest-cli": "^29.4.2",
     "puppeteer": "^19.5.2",
     "release-it": "^15.6.0",
     "stencil-tailwind-plugin": "^1.7.0",

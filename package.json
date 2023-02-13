@@ -1,0 +1,70 @@
+{
+  "name": "lucid",
+  "version": "0.0.1",
+  "description": "Stencil Component Starter",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/lucid/lucid.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rfxsolutions/lucid"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "scripts": {
+    "build": "stencil build --docs",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate",
+    "lint": "ts-standard",
+    "lint:fix": "ts-standard --fix",
+    "release": "release-it",
+    "tw": "npx tailwindcss -i ./src/css/directives.css -o ./src/css/tailwind.css --watch"
+  },
+  "dependencies": {
+    "@stencil/core": "^3.0.0",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "@tailwindcss/typography": "^0.5.9",
+    "tailwindcss-animation-delay": "^1.0.7"
+  },
+  "devDependencies": {
+    "@stencil/postcss": "^2.1.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.11",
+    "autoprefixer": "^10.4.13",
+    "jest": "^27.5.1",
+    "jest-cli": "^27.5.1",
+    "puppeteer": "^19.5.2",
+    "release-it": "^15.6.0",
+    "stencil-tailwind-plugin": "^1.7.0",
+    "tailwindcss": "^3.2.6",
+    "typescript": "^4.9.5"
+  },
+  "license": "MIT",
+  "release-it": {
+    "hooks": {
+      "after:init": [
+        "npm run lint",
+        "npm test",
+        "npm run build"
+      ]
+    },
+    "github": {
+      "release": true,
+      "releaseName": "Release ${version}"
+    }
+  }
+}

@@ -4,8 +4,8 @@ export default {
   content: ['./src/**/*.{ts,tsx,html}'],
   theme: {
     colors: {
-      'rfx-primary': '#153e69',
-      'rfx-secondary': '#5CBDE5',
+      primary: '#153E69',
+      secondary: '#5CBDE5',
       'rfx-gray': '#888A8B',
       'rfx-dark-gray': '#434343',
       transparent: 'transparent',
@@ -30,18 +30,28 @@ export default {
     },
 
     extend: {
-
+      fontFamily: {
+        inter: ['Inter']
+      },
       keyframes: {
         'fade-in': {
           '0%': { opacity: '0', transform: 'translateY(-20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' }
+        },
+        grow: {
+          to: {
+            width: '340px'
+          }
         }
       },
       animation: {
-        'fade-in': 'fade-in .5s ease-in forwards'
+        'fade-in': 'fade-in .5s ease-in forwards',
+        grow: 'grow 1s linear forwards'
       }
+    },
+    dropShadow: {
+      custom: '0 3px 5px rgba(203, 213, 225, 1)'
     }
-
   },
   plugins: [
     import('@tailwindcss/typography'),

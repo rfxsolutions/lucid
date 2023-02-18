@@ -6,8 +6,45 @@
     <title>Stencil Component Starter</title>
     <script type="module" src="/build/lucid.esm.js"></script>
     <script nomodule src="/build/lucid.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/css/tailwind.css">
   </head>
   <body>
-    <lucid-button onGreetings="() => {console.log('asdf')}"></lucid-button>
+    <div style="display: flex; margin-bottom: 10px; justify-items: center; width: 300px; align-items: center;">
+      <label style="padding-right: 10px;">Medium Primary</label>
+      <div>
+        <lucid-button label="test" onClick="console.log('asdf')"></lucid-button>
+      </div>
+    </div>
+
+    <div style="display: flex; margin-bottom: 10px; justify-items: center; width: 300px; align-items: center;">
+      <label style="padding-right: 10px;">Medium secondary</label>
+      <lucid-button type="secondary" label="test" onClick="console.log('asdf')">
+        <p slot="left-icon">I</p>
+      </lucid-button>
+    </div>
+
+    <div style="display: flex; margin-bottom: 10px; justify-items: center; width: 300px; align-items: center;">
+      <label style="padding-right: 10px;">Large Primary</label>
+      <lucid-button size="lg" label="test" onClick="console.log('asdf')"></lucid-button>
+    </div>
+
+    <div style="display: flex; margin-bottom: 10px; justify-items: center; width: 300px; align-items: center;">
+      <label style="padding-right: 10px;">Large Secondary</label>
+      <lucid-button type="secondary" size="lg" label="test" onClick="console.log('asdf')"></lucid-button>
+    </div>
+
+    <div style="display: flex; margin-bottom: 10px; justify-items: center; width: 300px; align-items: center;">
+      <label style="padding-right: 10px;">XLarge Primary</label>
+      <lucid-button size="xl" label="test" onClick="console.log('asdf')"></lucid-button>
+    </div>
+
+    <div style="display: flex; margin-bottom: 10px; justify-items: center; width: 300px; align-items: center;">
+      <label style="padding-right: 10px;">XLarge Secondary</label>
+      <lucid-button type="secondary" size="xl" label="test" onClick="console.log('asdf')"></lucid-button>
+    </div>
+   
   </body>
 </html>

@@ -29,7 +29,7 @@
     "generate": "stencil generate",
     "lint": "ts-standard",
     "lint:fix": "ts-standard --fix",
-    "test:ci": "npm run test -- --coverageReporters=json-summary",
+    "test:ci": "npx tailwindcss -i ./src/css/directives.css -o ./src/css/tailwind.css && npm run test -- --coverageReporters=json-summary",
     "release": "release-it",
     "tw": "npx tailwindcss -i ./src/css/directives.css -o ./src/css/tailwind.css --watch"
   },

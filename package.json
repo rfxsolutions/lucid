@@ -17,6 +17,7 @@
     "tw": "npx lerna run tw",
     "lint": "npx lerna run lint",
     "test": "npx lerna run test",
-    "bootstrap": "lerna exec npm install"
+    "bootstrap": "lerna exec npm install",
+    "release": "lerna version --no-private"
   }
 }

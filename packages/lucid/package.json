@@ -10,6 +10,7 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/lucid/lucid.esm.js",
+  "author": "RFX Solutions <dev@rfx.me>",
   "repository": {
     "type": "git",
     "url": "https://github.com/rfxsolutions/lucid"
@@ -18,8 +19,9 @@
     "registry": "https://npm.pkg.github.com"
   },
   "files": [
-    "dist/",
-    "loader/"
+    "dist/**/*",
+    "loader/",
+    "*.md"
   ],
   "scripts": {
     "build": "stencil build --docs",

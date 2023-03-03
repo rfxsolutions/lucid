@@ -1,7 +1,7 @@
 import { Config } from '@stencil/core'
 import tailwind from 'stencil-tailwind-plugin'
 import tailwindConf from './tailwind.config'
-import { angularOutputTarget } from '@stencil/angular-output-target';
+import { angularOutputTarget } from '@stencil/angular-output-target'
 
 export const config: Config = {
   namespace: 'lucid',
@@ -27,7 +27,7 @@ export const config: Config = {
       directivesProxyFile: '../lucid-angular/projects/component-library/src/lib/stencil-generated/components.ts',
       directivesArrayFile: '../lucid-angular/projects/component-library/src/lib/stencil-generated/index.ts',
       includeImportCustomElements: true
-    }),
+    })
   ],
   plugins: [
     tailwind({

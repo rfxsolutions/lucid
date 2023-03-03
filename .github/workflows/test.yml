@@ -19,8 +19,8 @@ jobs:
     - name: Checkout Branch
       uses: actions/checkout@v3
 
-    - name: Install
-      run: npm i
+    - name: Install All Deps
+      run: npm run bootstrap
 
     - name: Lint
       run: npm run lint

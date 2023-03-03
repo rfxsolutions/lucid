@@ -22,7 +22,7 @@ jobs:
     - name: Install All Deps
       run: npm run bootstrap
 
-    - name: Build Tailwind CSS
+    - name: Generate Tailwind CSS
       run: npm run tw
 
     - name: Lint

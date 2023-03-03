@@ -18,6 +18,6 @@
     "lint": "npx lerna run lint",
     "test": "npx lerna run test",
     "bootstrap": "lerna exec npm install",
-    "release": "lerna version --no-private"
+    "release": "npm run build && npx lerna version --no-private"
   }
 }

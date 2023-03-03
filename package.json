@@ -13,6 +13,8 @@
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
+    "build": "npx lerna run build",
+    "tw": "npx lerna run tw",
     "lint": "npx lerna run lint",
     "test": "npx lerna run test",
     "bootstrap": "lerna exec npm install"

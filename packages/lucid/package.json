@@ -31,7 +31,8 @@
     "lint:fix": "ts-standard --fix",
     "test:ci": "npx tailwindcss -i ./src/css/directives.css -o ./src/css/tailwind.css && npm run test -- --coverageReporters=json-summary",
     "release": "release-it",
-    "tw": "npx tailwindcss -i ./src/css/directives.css -o ./src/css/tailwind.css --watch"
+    "tw": "npx tailwindcss -i ./src/css/directives.css -o ./src/css/tailwind.css",
+    "tw:dev": "npx tailwindcss -i ./src/css/directives.css -o ./src/css/tailwind.css --watch"
   },
   "dependencies": {
     "@stencil/angular-output-target": "^0.5.0",

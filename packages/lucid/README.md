@@ -1,6 +1,6 @@
 # Welcome to Lucid!
 
-Lucid is an open-source component library created using [stencil.js](https://stenciljs.com/). The package is currently being hosed on github package registry.`
+Lucid is an open-source component library created using [stencil.js](https://stenciljs.com/). The package is currently being hosed on github package registry.
 
 ## Install
 

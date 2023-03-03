@@ -5,8 +5,14 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ButtonSize, ButtonType } from "./components/button/types";
+export { ButtonSize, ButtonType } from "./components/button/types";
 export namespace Components {
     interface LucidButton {
+        "disabled": boolean;
+        "label": string;
+        "size": ButtonSize;
+        "type": ButtonType;
     }
     interface MyComponent {
         /**
@@ -22,6 +28,10 @@ export namespace Components {
          */
         "middle": string;
     }
+}
+export interface LucidButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLucidButtonElement;
 }
 declare global {
     interface HTMLLucidButtonElement extends Components.LucidButton, HTMLStencilElement {
@@ -43,6 +53,11 @@ declare global {
 }
 declare namespace LocalJSX {
     interface LucidButton {
+        "disabled"?: boolean;
+        "label"?: string;
+        "onOnClick"?: (event: LucidButtonCustomEvent<UIEvent>) => void;
+        "size"?: ButtonSize;
+        "type"?: ButtonType;
     }
     interface MyComponent {
         /**

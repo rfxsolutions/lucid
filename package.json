@@ -1,7 +1,7 @@
 {
   "name": "lucid",
   "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "description": "Lucid library made with <3 from rfxsolutions",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "es2015": "dist/esm/index.mjs",
@@ -29,6 +29,7 @@
     "generate": "stencil generate",
     "lint": "ts-standard",
     "lint:fix": "ts-standard --fix",
+    "test:ci": "npx tailwindcss -i ./src/css/directives.css -o ./src/css/tailwind.css && npm run test -- --coverageReporters=json-summary",
     "release": "release-it",
     "tw": "npx tailwindcss -i ./src/css/directives.css -o ./src/css/tailwind.css --watch"
   },

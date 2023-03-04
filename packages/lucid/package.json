@@ -11,9 +11,6 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/lucid/lucid.esm.js",
-  "exports": {
-    "./": "./dist/"
-  },
   "author": "RFX Solutions <dev@rfx.me>",
   "repository": {
     "type": "git",
@@ -29,6 +26,7 @@
   ],
   "scripts": {
     "build": "stencil build --docs",
+    "postbuild": "./scripts/post-build.sh",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",

@@ -1,0 +1,1 @@
+echo "export * from '../types/components.d'" >> dist/components/index.d.ts

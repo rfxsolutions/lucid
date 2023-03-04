@@ -89,7 +89,7 @@ export class LucidButton {
       }
       case 'icon': {
         const primary = [`inline-flex items-center rounded-md bg-primary ${this.buttonSize} font-normal text-white border border-primary hover:drop-shadow-button`, this.cursor]
-        const disabledPrimary = ['m-1 text-gray-400 rounded', this.icon ?? '']
+        const disabledPrimary = ['m-1 text-gray-400 rounded']
         return this.disabled ? disabledPrimary : primary
       }
       default:

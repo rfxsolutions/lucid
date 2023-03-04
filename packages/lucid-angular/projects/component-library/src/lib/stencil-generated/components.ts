@@ -4,10 +4,10 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Even
 
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
-import type { Components } from '@rfxsolutions/lucid/components';
+import type { Components } from '@rfxsolutions/lucid/dist/components';
 
-import { defineCustomElement as defineLucidButton } from '@rfxsolutions/lucid/components/lucid-button.js';
-import { defineCustomElement as defineMyComponent } from '@rfxsolutions/lucid/components/my-component.js';
+import { defineCustomElement as defineLucidButton } from '@rfxsolutions/lucid/dist/components/lucid-button.js';
+import { defineCustomElement as defineMyComponent } from '@rfxsolutions/lucid/dist/components/my-component.js';
 @ProxyCmp({
   defineCustomElementFn: defineLucidButton,
   inputs: ['disabled', 'label', 'size', 'type']

@@ -12,10 +12,6 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rfxsolutions/lucid"
-  },
   "scripts": {
     "build": "npx lerna run build",
     "tw": "npx lerna run tw",

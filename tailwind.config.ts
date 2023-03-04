@@ -30,9 +30,6 @@ export default {
     },
 
     extend: {
-      fontFamily: {
-        inter: ['Inter']
-      },
       keyframes: {
         'fade-in': {
           '0%': { opacity: '0', transform: 'translateY(-20px)' },
@@ -50,7 +47,9 @@ export default {
       }
     },
     dropShadow: {
-      custom: '0 3px 5px rgba(203, 213, 225, 1)'
+      custom: '0 3px 5px rgba(203, 213, 225, 1)',
+      button: '0 3px 5px rgba(203, 213, 225, 1)',
+      modal: '0 6px 10px rgba(71, 85, 105, 1)'
     }
   },
   plugins: [

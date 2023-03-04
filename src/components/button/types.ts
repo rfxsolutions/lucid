@@ -1,12 +1,2 @@
-export enum ButtonSize {
-  md = 'md',
-  lg = 'lg',
-  xl = 'xl'
-}
-
-export enum ButtonType {
-  primary = 'primary',
-  secondary = 'secondary',
-  link = 'link',
-  icon = 'icon'
-}
+export type ButtonPreset = 'primary' | 'secondary' | 'tab' | 'link' | 'fab' | 'icon' | 'ghost'
+export type ButtonSize = 'md' | 'lg' | 'xl'

@@ -16,12 +16,12 @@ export class LucidButton {
   @Prop() type: ButtonType = ButtonType.primary
   @Element() host: HTMLElement
 
-  private iconLeftSlot: HTMLElement
+  // private iconLeftSlot: HTMLElement
   // private iconRightSlot: HTMLElement
   // private defaultSlot: HTMLElement
 
   componentWillLoad (): void {
-    this.iconLeftSlot = this.host.querySelector("[slot='left-icon']")
+    // this.iconLeftSlot = this.host.querySelector("[slot='left-icon']")
     // this.iconRightSlot = this.host.querySelector("[slot='right-icon']")
     // this.defaultSlot = this.host.querySelector("[slot='default']")
   }

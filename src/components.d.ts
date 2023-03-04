@@ -5,14 +5,18 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonSize, ButtonType } from "./components/button/types";
-export { ButtonSize, ButtonType } from "./components/button/types";
+import { ButtonPreset, ButtonSize } from "./components/button/types";
+export { ButtonPreset, ButtonSize } from "./components/button/types";
 export namespace Components {
     interface LucidButton {
+        "classes": string[];
+        "cursor": string;
         "disabled": boolean;
+        "icon": string;
         "label": string;
+        "loading": boolean;
+        "preset": ButtonPreset;
         "size": ButtonSize;
-        "type": ButtonType;
     }
     interface MyComponent {
         /**
@@ -53,11 +57,15 @@ declare global {
 }
 declare namespace LocalJSX {
     interface LucidButton {
+        "classes"?: string[];
+        "cursor"?: string;
         "disabled"?: boolean;
+        "icon"?: string;
         "label"?: string;
+        "loading"?: boolean;
         "onOnClick"?: (event: LucidButtonCustomEvent<UIEvent>) => void;
+        "preset"?: ButtonPreset;
         "size"?: ButtonSize;
-        "type"?: ButtonType;
     }
     interface MyComponent {
         /**

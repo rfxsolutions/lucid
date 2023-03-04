@@ -11,6 +11,9 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/lucid/lucid.esm.js",
+  "exports": {
+    "./": "./dist/"
+  },
   "author": "RFX Solutions <dev@rfx.me>",
   "repository": {
     "type": "git",

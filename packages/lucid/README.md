@@ -16,6 +16,5 @@ npm install @rfxsolutions/lucid@latest
 ## Building
 
 ```sh
-# builds all projects
 npm run build
 ```

@@ -1,6 +1,6 @@
 {
   "name": "@rfxsolutions/lucid",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Lucid library made with <3 from rfxsolutions",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",

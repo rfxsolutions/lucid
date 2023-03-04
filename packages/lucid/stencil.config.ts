@@ -23,7 +23,7 @@ export const config: Config = {
       serviceWorker: null // disable service workers
     },
     angularOutputTarget({
-      componentCorePackage: '@rfxsolutions/lucid',
+      componentCorePackage: '@rfxsolutions/lucid/dist',
       directivesProxyFile: '../lucid-angular/projects/component-library/src/lib/stencil-generated/components.ts',
       directivesArrayFile: '../lucid-angular/projects/component-library/src/lib/stencil-generated/index.ts',
       includeImportCustomElements: true

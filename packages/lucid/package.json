@@ -6,7 +6,8 @@
   "module": "dist/index.js",
   "es2015": "dist/esm/index.mjs",
   "es2017": "dist/esm/index.mjs",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/components/index.d.ts",
+  "pkgRoot": "dist/",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/lucid/lucid.esm.js",
@@ -19,7 +20,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "files": [
-    "dist/**/*",
+    "dist/",
     "loader/",
     "*.md"
   ],

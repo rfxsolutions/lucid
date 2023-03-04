@@ -1,9 +1,11 @@
 {
-  "name": "root",
-  "private": false,
-  "workspaces": [
-    "packages/*"
-  ],
+  "name": "@rfxsolutions/root",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/**"
+    ]
+  },
   "devDependencies": {
     "@types/node": "^18.14.5",
     "lerna": "^6.5.1",

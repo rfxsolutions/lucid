@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^15.2.0",
-    "@angular/core": "^15.2.0",
-    "@rfxsolutions/lucid": "file:rfxsolutions/lucid@0.1.13"
+    "@angular/core": "^15.2.0"
   },
   "dependencies": {
+    "@rfxsolutions/lucid": "^0.1.5",
     "tslib": "^2.3.0"
   },
   "sideEffects": false

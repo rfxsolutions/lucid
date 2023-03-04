@@ -4,7 +4,7 @@
   "peerDependencies": {
     "@angular/common": "^15.2.0",
     "@angular/core": "^15.2.0",
-    "@rfxsolutions/lucid": "^0.1.5"
+    "@rfxsolutions/lucid": "file:rfxsolutions/lucid@0.1.13"
   },
   "dependencies": {
     "tslib": "^2.3.0"

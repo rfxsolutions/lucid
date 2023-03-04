@@ -1,6 +1,6 @@
 {
   "name": "@rfxsolutions/lucid-angular-projects",
-  "version": "0.1.2",
+  "version": "0.1.16",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

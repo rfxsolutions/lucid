@@ -39,6 +39,10 @@
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.9",
+    "@types/lodash": "^4.14.191",
+    "@types/postal": "^1.0.31",
+    "lodash": "^4.17.21",
+    "postal": "^2.0.6",
     "tailwindcss-animation-delay": "^1.0.7"
   },
   "devDependencies": {

@@ -8,42 +8,49 @@
     <script nomodule src="/build/lucid.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/css/tailwind.css">
+    <script src="https://kit.fontawesome.com/ab45daefbd.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div style="display: flex; margin-bottom: 10px; justify-items: center; width: 300px; align-items: center;">
+    <div style="display: flex; margin-bottom: 10px; justify-items: center; width: 300px;margin-top: 10px; align-items: center;">
       <label style="padding-right: 10px;">Medium Primary</label>
       <div>
-        <lucid-button label="test" onClick="console.log('asdf')"></lucid-button>
+        <lucid-button label="Medium" onClick="console.log('asdf')">
+        </lucid-button>
       </div>
     </div>
 
-    <div style="display: flex; margin-bottom: 10px; justify-items: center; width: 300px; align-items: center;">
+    <div style="display: flex; margin-bottom: 10px; justify-items: center; width: 300px;margin-top: 10px; align-items: center;">
       <label style="padding-right: 10px;">Medium secondary</label>
-      <lucid-button type="secondary" label="test" onClick="console.log('asdf')">
-        <p slot="left-icon">I</p>
+      <lucid-button preset="secondary" loading label="Medium" onClick="console.log('asdf')"></lucid-button>
+    </div>
+
+    <div style="display: flex; flex-direction: row; margin-bottom: 10px; justify-items: center; margin-top: 20px; align-items: center;">
+      <label style="padding-right: 10px;">Large Primary</label>
+      <lucid-button preset="icon" size='lg' label="Large" onClick="console.log('asdf')">
+        <i slot="left-icon" class="fa-regular fa-signature" style="margin-right: 4px;"></i>
+        <i slot="right-icon" class="fa-regular fa-signature" style="margin-left: 4px;"></i>
       </lucid-button>
     </div>
 
-    <div style="display: flex; margin-bottom: 10px; justify-items: center; width: 300px; align-items: center;">
-      <label style="padding-right: 10px;">Large Primary</label>
-      <lucid-button size="lg" label="test" onClick="console.log('asdf')"></lucid-button>
-    </div>
-
-    <div style="display: flex; margin-bottom: 10px; justify-items: center; width: 300px; align-items: center;">
+    <div style="display: flex; margin-bottom: 10px; justify-items: center; width: 300px;margin-top: 10px; align-items: center;">
       <label style="padding-right: 10px;">Large Secondary</label>
-      <lucid-button type="secondary" size="lg" label="test" onClick="console.log('asdf')"></lucid-button>
+      <lucid-button preset="secondary" size="lg" label="Large" onClick="console.log('asdf')"></lucid-button>
     </div>
 
     <div style="display: flex; margin-bottom: 10px; justify-items: center; width: 300px; align-items: center;">
       <label style="padding-right: 10px;">XLarge Primary</label>
-      <lucid-button size="xl" label="test" onClick="console.log('asdf')"></lucid-button>
+      <lucid-button preset="primary" size="xl" label="XLarge" onClick="console.log('asdf')"></lucid-button>
     </div>
 
     <div style="display: flex; margin-bottom: 10px; justify-items: center; width: 300px; align-items: center;">
       <label style="padding-right: 10px;">XLarge Secondary</label>
-      <lucid-button type="secondary" size="xl" label="test" onClick="console.log('asdf')"></lucid-button>
+      <lucid-button preset="secondary" size="xl" label="XLarge" onClick="console.log('asdf')"></lucid-button>
+    </div>
+
+    <div style="display: flex; margin-bottom: 10px; justify-items: center; width: 300px; align-items: center;">
+      <label style="padding-right: 10px;">XLarge Ghost</label>
+      <lucid-button preset="ghost" size="xl" label="XLarge" onClick="console.log('asdf')"></lucid-button>
     </div>
    
   </body>

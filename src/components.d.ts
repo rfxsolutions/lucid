@@ -18,6 +18,12 @@ export namespace Components {
         "preset": ButtonPreset;
         "size": ButtonSize;
     }
+    interface LucidServerTable {
+        "topicId": string;
+    }
+    interface LucidServerTableData {
+        "topicId": string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -44,6 +50,18 @@ declare global {
         prototype: HTMLLucidButtonElement;
         new (): HTMLLucidButtonElement;
     };
+    interface HTMLLucidServerTableElement extends Components.LucidServerTable, HTMLStencilElement {
+    }
+    var HTMLLucidServerTableElement: {
+        prototype: HTMLLucidServerTableElement;
+        new (): HTMLLucidServerTableElement;
+    };
+    interface HTMLLucidServerTableDataElement extends Components.LucidServerTableData, HTMLStencilElement {
+    }
+    var HTMLLucidServerTableDataElement: {
+        prototype: HTMLLucidServerTableDataElement;
+        new (): HTMLLucidServerTableDataElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -52,6 +70,8 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "lucid-button": HTMLLucidButtonElement;
+        "lucid-server-table": HTMLLucidServerTableElement;
+        "lucid-server-table-data": HTMLLucidServerTableDataElement;
         "my-component": HTMLMyComponentElement;
     }
 }
@@ -66,6 +86,12 @@ declare namespace LocalJSX {
         "onOnClick"?: (event: LucidButtonCustomEvent<UIEvent>) => void;
         "preset"?: ButtonPreset;
         "size"?: ButtonSize;
+    }
+    interface LucidServerTable {
+        "topicId"?: string;
+    }
+    interface LucidServerTableData {
+        "topicId"?: string;
     }
     interface MyComponent {
         /**
@@ -83,6 +109,8 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "lucid-button": LucidButton;
+        "lucid-server-table": LucidServerTable;
+        "lucid-server-table-data": LucidServerTableData;
         "my-component": MyComponent;
     }
 }
@@ -91,6 +119,8 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "lucid-button": LocalJSX.LucidButton & JSXBase.HTMLAttributes<HTMLLucidButtonElement>;
+            "lucid-server-table": LocalJSX.LucidServerTable & JSXBase.HTMLAttributes<HTMLLucidServerTableElement>;
+            "lucid-server-table-data": LocalJSX.LucidServerTableData & JSXBase.HTMLAttributes<HTMLLucidServerTableDataElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }

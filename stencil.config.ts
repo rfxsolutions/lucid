@@ -18,7 +18,10 @@ export const config: Config = {
     {
       type: 'www',
       baseUrl: 'http://localhost:3333',
-      serviceWorker: null // disable service workers
+      serviceWorker: null, // disable service workers,
+      copy: [
+        { src: 'pages' }
+      ]
     }
   ],
   plugins: [

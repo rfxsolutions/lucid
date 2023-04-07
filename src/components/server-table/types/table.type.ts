@@ -7,14 +7,14 @@ export interface ServerTableFilter extends ServerPaging {
   search?: string
 }
 
-export interface ServerTableBreakpoints {
-  breakpoint: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
-  width?: `${number}px` | `${number}%` | `${number}/${number}`
-}
-
 export interface ServerTableOptionsBase<D> {
   reducer?: (element: D) => string
-  breakpoints?: ServerTableBreakpoints[]
+  breakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+  text?: 'left' | 'center' | 'right'
+  width?: Array<{
+    breakpoint: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+    size: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
+  }>
 }
 
 export interface ServerTableOptionsSimple <D extends Record<string, any>> extends ServerTableOptionsBase<D> {

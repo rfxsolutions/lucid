@@ -59,27 +59,66 @@ export class LucidServerTableData<D extends Record<string, any>> {
       options: [
         {
           label: 'Id',
-          key: 'id'
+          key: 'id',
+          breakpoint: 'lg',
+          width: [
+            {
+              breakpoint: 'lg',
+              size: 1
+            }
+          ]
         },
         {
           label: 'Character',
-          key: 'name'
+          key: 'name',
+          width: [
+            {
+              breakpoint: 'lg',
+              size: 6
+            }
+          ]
         },
         {
           label: 'Status',
-          key: 'status'
+          key: 'status',
+          width: [
+            {
+              breakpoint: 'lg',
+              size: 1
+            }
+          ]
         },
         {
           label: 'Species',
-          key: 'species'
+          key: 'species',
+          breakpoint: 'md',
+          width: [
+            {
+              breakpoint: 'lg',
+              size: 2
+            },
+          ]
         },
         {
           label: 'Gender',
-          key: 'gender'
+          key: 'gender',
+          breakpoint: '2xl',
+          width: [
+            {
+              breakpoint: 'lg',
+              size: 1
+            }
+          ]
         },
         {
           custom: 'templates',
-          id: 'custom-avatar'
+          id: 'custom-avatar',
+          width: [
+            {
+              breakpoint: 'lg',
+              size: 1
+            }
+          ]
         }
       ],
       defaultData: [{

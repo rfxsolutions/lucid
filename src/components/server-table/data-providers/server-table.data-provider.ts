@@ -1,7 +1,7 @@
 import { uniqueId } from 'lodash'
-import { ServerTableFetcherConfig, ServerTableOptions, ServerTablePaging, ServerTableSort } from '../types'
+import { ServerTableFetcherConfig, ServerTableOptions, ServerPaging, ServerTableSort } from '../types'
 import { ServerTableTopicsMixin } from '../mixins/server-table-topics.mixin'
-import { mixin, PostalMixin, LoggerMixin, FetcherMixin, FetchResults } from '../../../mixins'
+import { mixin, PostalMixin, LoggerMixin, FetcherMixin, FetchState } from '../../../mixins'
 import postal from 'postal'
 import { ServerTableProviderConfig } from '../types/provider.type'
 
@@ -14,13 +14,13 @@ export class ServerTableDataProvider<D> extends mixin(
   // State
   private search: string = ''
   private readonly options: Array<ServerTableOptions<D>> = []
-  private paging: ServerTablePaging = { skip: 0, limit: 10 }
+  private paging: ServerPaging = { skip: 0, limit: 10 }
   private sort: ServerTableSort<D> = {}
 
   constructor (config: ServerTableProviderConfig<D>) {
     super()
     this.channel = postal.channel('server-table')
-    this.topicId = config.uid ?? uniqueId('topic')
+    this.providerId = config.uid ?? uniqueId('topic')
 
     this.options = config.options
     this.fetcher = config.fetcher
@@ -53,9 +53,15 @@ export class ServerTableDataProvider<D> extends mixin(
       this.channel.subscribe(this.topics.emitSort, () => this.updateSort(this.sort)),
 
       this.channel.subscribe(this.topics.performSearch, (data: string) => { void this.performSearch(data) }),
-      this.channel.subscribe(this.topics.performPaging, (data: ServerTablePaging) => { void this.performPaging(data) }),
+      this.channel.subscribe(this.topics.performPaging, (data: ServerPaging) => { void this.performPaging(data) }),
       this.channel.subscribe(this.topics.performSort, (data: ServerTableSort<D>) => { void this.performSort(data) })
     )
+
+    this.updatePaging(this.paging)
+    this.updateData(this.data)
+    this.updateSearch(this.search)
+    this.updateTableOptions(this.options)
+    this.updateSort(this.sort)
   }
 
   public async load (): Promise<void> {
@@ -70,32 +76,32 @@ export class ServerTableDataProvider<D> extends mixin(
   // Event Handlers
   private async performSearch (search: string): Promise<void> {
     this.search = search
-    const { count, results }: FetchResults<D> = await this.fetcher(this.fetcherConfig)
-    this.data = results
-    this.count = count
+    await this.performFetch(this.fetcherConfig)
     this.updateData(this.data)
     this.updateCount(this.count)
+    this.updatePaging({ skip: 0, limit: this.paging.limit })
   }
 
-  private async performPaging (paging: ServerTablePaging): Promise<void> {
+  private async performPaging (paging: ServerPaging): Promise<void> {
     this.paging = paging
-    const { count, results }: FetchResults<D> = await this.fetcher(this.fetcherConfig)
-    this.data = results
-    this.count = count
+    await this.performFetch(this.fetcherConfig)
+    this.updatePaging(this.paging)
     this.updateData(this.data)
     this.updateCount(this.count)
   }
 
   private async performSort (sort: ServerTableSort<D>): Promise<void> {
     this.sort = sort
-    const { count, results }: FetchResults<D> = await this.fetcher(this.fetcherConfig)
-    this.data = results
-    this.count = count
+    await this.performFetch(this.fetcherConfig)
     this.updateData(this.data)
     this.updateCount(this.count)
   }
 
   // Event Emitters
+  public updateFetchState (data: FetchState): void {
+    this.channel.publish(this.topics.updateFetchState, data)
+  }
+
   private updateTableOptions (data: Array<ServerTableOptions<D>>): void {
     this.channel.publish(this.topics.updateTableOptions, data)
   }
@@ -108,7 +114,7 @@ export class ServerTableDataProvider<D> extends mixin(
     this.channel.publish(this.topics.updateSort, data)
   }
 
-  private updatePaging (data: Partial<ServerTablePaging>): void {
+  private updatePaging (data: Partial<ServerPaging>): void {
     this.channel.publish(this.topics.updatePaging, data)
   }
 

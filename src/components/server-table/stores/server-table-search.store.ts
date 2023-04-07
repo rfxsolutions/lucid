@@ -1,30 +1,40 @@
 import { uniqueId } from 'lodash'
-import { ServerTableStoreConfig } from '../types'
+import { ServerTableSearchStoreConfig } from '../types'
 import { ServerTableTopicsMixin } from '../mixins'
 import { PostalMixin, LoggerMixin, mixin } from '../../../mixins'
 import postal from 'postal'
+import { LucidServerTableSearchState } from '../types/search.type'
 
-export class ServerTableSearchStore<D> extends mixin(
+export class ServerTableSearchStore extends mixin(
   PostalMixin,
   LoggerMixin,
   ServerTableTopicsMixin
 ) {
   // State
   public search: string = ''
+  private readonly updateState: (state: Partial<LucidServerTableSearchState>) => void
 
-  constructor (config: ServerTableStoreConfig<D>) {
+  constructor (config: ServerTableSearchStoreConfig) {
     super()
     this.channel = postal.channel('server-table')
-    this.topicId = config.uid ?? uniqueId('topic')
+    this.providerId = config.uid ?? uniqueId('topic')
+    this.updateState = config.updateState
 
     this.setup()
+  }
+
+  public setState (state: Partial<LucidServerTableSearchState>): void {
+    this.updateState(state)
+    for (const prop in state) {
+      this[prop] = state[prop]
+    }
   }
 
   // Lifecycle Hooks
   private setup (): void {
     this.subscriptions.push(
       this.channel.subscribe(this.topics.terminateSubscriptions, this.destroy),
-      this.channel.subscribe(this.topics.updateSearch, this.updateSearch),
+      this.channel.subscribe(this.topics.updateSearch, (data: string) => { this.setState({ search: data }) })
     )
   }
 
@@ -32,13 +42,8 @@ export class ServerTableSearchStore<D> extends mixin(
     this.channel.publish(this.topics.emitSearch)
   }
 
-  // Effect Handlers
-  private updateSearch (data: string): void {
-    this.search = data
-  }
-
   // Event Emitters
-  public performSort (data: string): void {
+  public performSearch (data: string): void {
     this.channel.publish(this.topics.performSearch, data)
   }
 }

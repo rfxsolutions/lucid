@@ -8,6 +8,7 @@ export interface ServerTableProviderTopics {
   emitSort: 'sort.emit'
 
   updateSearch: 'search.update'
+  updateFetchState: 'fetch-state.update'
   updateTableOptions: 'table-options.update'
   updateData: 'data.update'
   updatePaging: 'paging.update'

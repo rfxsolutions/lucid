@@ -1,4 +1,5 @@
 import { Component, h, JSX, Prop, State } from '@stencil/core'
+import { cacheExchange, createClient, dedupExchange, fetchExchange, gql } from '@urql/core'
 import { ServerTableDataProvider } from './data-providers'
 import { ServerTableFetcherConfig } from './types'
 
@@ -12,21 +13,49 @@ import { ServerTableFetcherConfig } from './types'
 })
 
 export class LucidServerTableData<D extends Record<string, any>> {
-  @Prop() topicId: string
+  @Prop() providerId: string
   @State() provider: ServerTableDataProvider<D>
 
-  connectedCallback (): void {
+  client = createClient({
+    url: 'https://rickandmortyapi.com/graphql',
+    exchanges: [dedupExchange, cacheExchange, fetchExchange]
+  })
+
+  constructor () {
     const fetcher = async (config: ServerTableFetcherConfig<D>): Promise<{ results: D[], count: number }> => {
-      const resp = await fetch('https://rickandmortyapi.com/api/character')
-      const json = await resp.json()
-      const results: D[] = json?.results ?? []
+      const page = (config.filter.skip / config.filter.limit) + 1
+      const variables = {
+        page,
+        filter: {
+          name: config.filter.search ?? null
+        }
+      }
+      const query = gql(`
+        query Characters ($page: Int! $filter: FilterCharacter!) {
+          characters(page: $page, filter: $filter) {
+            info {
+              count
+            }
+            results {
+              id
+              name
+              status
+              species
+              gender
+              image
+            }
+          }
+        }
+      `)
+      const { data } = await this.client.query(query, variables).toPromise()
+
       return {
-        results,
-        count: results.length
+        results: data?.characters?.results ?? [],
+        count: data?.characters?.info.count ?? 0
       }
     }
     this.provider = new ServerTableDataProvider({
-      uid: this.topicId,
+      uid: this.providerId,
       options: [
         {
           label: 'Id',
@@ -49,16 +78,17 @@ export class LucidServerTableData<D extends Record<string, any>> {
           key: 'gender'
         },
         {
-          label: 'Image',
-          key: 'image',
-          custom: true,
-          customElementSelector: 'img',
-          customAttributeKey: 'src'
+          custom: 'templates',
+          id: 'custom-avatar'
         }
       ],
       defaultData: [{
         name: 'Test'
       } as any],
+      defaultPaging: {
+        skip: 0,
+        limit: 20
+      },
       fetcher
     })
   }

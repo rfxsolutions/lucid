@@ -1,6 +1,6 @@
 import { uniqueId } from 'lodash'
 import { LucidServerTableState, ServerTableOptions, ServerTableSort, ServerTableStoreConfig } from '../types'
-import { LoggerMixin, mixin, PostalMixin } from '../../../mixins'
+import { FetchState, LoggerMixin, mixin, PostalMixin } from '../../../mixins'
 import { ServerTableTopicsMixin } from '../mixins'
 import postal from 'postal'
 
@@ -13,12 +13,13 @@ export class ServerTableStore<D> extends mixin(
   public options: Array<ServerTableOptions<D>> = []
   public data: D[] = []
   public sort: ServerTableSort<D> | null = null
+  public fetchState: FetchState
   private readonly updateState: (state: Partial<LucidServerTableState<D>>) => void
 
   constructor (config: ServerTableStoreConfig<D>) {
     super()
     this.channel = postal.channel('server-table')
-    this.topicId = config.uid ?? uniqueId('topic')
+    this.providerId = config.uid ?? uniqueId('topic')
     this.updateState = config.updateState
 
     this.setup()
@@ -36,6 +37,7 @@ export class ServerTableStore<D> extends mixin(
     this.subscriptions.push(
       this.channel.subscribe(this.topics.terminateSubscriptions, () => this.destroy()),
       this.channel.subscribe(this.topics.updateData, (data: D[]) => this.setState({ data })),
+      this.channel.subscribe(this.topics.updateFetchState, (data: FetchState) => this.setState({ fetchState: data })),
       this.channel.subscribe(this.topics.updateSort, (sort: ServerTableSort<D>) => this.setState({ sort })),
       this.channel.subscribe(this.topics.updateTableOptions, (options: Array<ServerTableOptions<D>>) => this.setState({ options }))
     )

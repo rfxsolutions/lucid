@@ -19,10 +19,10 @@ export namespace Components {
         "size": ButtonSize;
     }
     interface LucidServerTable {
-        "topicId": string;
+        "providerId": string;
     }
     interface LucidServerTableData {
-        "topicId": string;
+        "providerId": string;
     }
     interface MyComponent {
         /**
@@ -88,10 +88,10 @@ declare namespace LocalJSX {
         "size"?: ButtonSize;
     }
     interface LucidServerTable {
-        "topicId"?: string;
+        "providerId"?: string;
     }
     interface LucidServerTableData {
-        "topicId"?: string;
+        "providerId"?: string;
     }
     interface MyComponent {
         /**

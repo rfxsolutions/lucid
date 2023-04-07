@@ -76,10 +76,11 @@ export class ServerTableDataProvider<D> extends mixin(
   // Event Handlers
   private async performSearch (search: string): Promise<void> {
     this.search = search
+    this.paging.skip = 0
     await this.performFetch(this.fetcherConfig)
+    this.updatePaging({ skip: 0, limit: this.paging.limit })
     this.updateData(this.data)
     this.updateCount(this.count)
-    this.updatePaging({ skip: 0, limit: this.paging.limit })
   }
 
   private async performPaging (paging: ServerPaging): Promise<void> {

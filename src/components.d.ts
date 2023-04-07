@@ -8,6 +8,10 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ButtonPreset, ButtonSize } from "./components/button/types";
 export { ButtonPreset, ButtonSize } from "./components/button/types";
 export namespace Components {
+    interface LucidAvatar {
+        "description"?: string;
+        "url": string;
+    }
     interface LucidButton {
         "classes": string[];
         "cursor": string;
@@ -17,6 +21,15 @@ export namespace Components {
         "loading": boolean;
         "preset": ButtonPreset;
         "size": ButtonSize;
+    }
+    interface LucidServerPaginator {
+        "providerId": string;
+    }
+    interface LucidServerSearch {
+        "autofocus": boolean;
+        "label": string;
+        "providerId": string;
+        "showHotkey": boolean;
     }
     interface LucidServerTable {
         "providerId": string;
@@ -44,11 +57,29 @@ export interface LucidButtonCustomEvent<T> extends CustomEvent<T> {
     target: HTMLLucidButtonElement;
 }
 declare global {
+    interface HTMLLucidAvatarElement extends Components.LucidAvatar, HTMLStencilElement {
+    }
+    var HTMLLucidAvatarElement: {
+        prototype: HTMLLucidAvatarElement;
+        new (): HTMLLucidAvatarElement;
+    };
     interface HTMLLucidButtonElement extends Components.LucidButton, HTMLStencilElement {
     }
     var HTMLLucidButtonElement: {
         prototype: HTMLLucidButtonElement;
         new (): HTMLLucidButtonElement;
+    };
+    interface HTMLLucidServerPaginatorElement extends Components.LucidServerPaginator, HTMLStencilElement {
+    }
+    var HTMLLucidServerPaginatorElement: {
+        prototype: HTMLLucidServerPaginatorElement;
+        new (): HTMLLucidServerPaginatorElement;
+    };
+    interface HTMLLucidServerSearchElement extends Components.LucidServerSearch, HTMLStencilElement {
+    }
+    var HTMLLucidServerSearchElement: {
+        prototype: HTMLLucidServerSearchElement;
+        new (): HTMLLucidServerSearchElement;
     };
     interface HTMLLucidServerTableElement extends Components.LucidServerTable, HTMLStencilElement {
     }
@@ -69,13 +100,20 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "lucid-avatar": HTMLLucidAvatarElement;
         "lucid-button": HTMLLucidButtonElement;
+        "lucid-server-paginator": HTMLLucidServerPaginatorElement;
+        "lucid-server-search": HTMLLucidServerSearchElement;
         "lucid-server-table": HTMLLucidServerTableElement;
         "lucid-server-table-data": HTMLLucidServerTableDataElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface LucidAvatar {
+        "description"?: string;
+        "url"?: string;
+    }
     interface LucidButton {
         "classes"?: string[];
         "cursor"?: string;
@@ -86,6 +124,15 @@ declare namespace LocalJSX {
         "onOnClick"?: (event: LucidButtonCustomEvent<UIEvent>) => void;
         "preset"?: ButtonPreset;
         "size"?: ButtonSize;
+    }
+    interface LucidServerPaginator {
+        "providerId"?: string;
+    }
+    interface LucidServerSearch {
+        "autofocus"?: boolean;
+        "label"?: string;
+        "providerId"?: string;
+        "showHotkey"?: boolean;
     }
     interface LucidServerTable {
         "providerId"?: string;
@@ -108,7 +155,10 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
+        "lucid-avatar": LucidAvatar;
         "lucid-button": LucidButton;
+        "lucid-server-paginator": LucidServerPaginator;
+        "lucid-server-search": LucidServerSearch;
         "lucid-server-table": LucidServerTable;
         "lucid-server-table-data": LucidServerTableData;
         "my-component": MyComponent;
@@ -118,7 +168,10 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "lucid-avatar": LocalJSX.LucidAvatar & JSXBase.HTMLAttributes<HTMLLucidAvatarElement>;
             "lucid-button": LocalJSX.LucidButton & JSXBase.HTMLAttributes<HTMLLucidButtonElement>;
+            "lucid-server-paginator": LocalJSX.LucidServerPaginator & JSXBase.HTMLAttributes<HTMLLucidServerPaginatorElement>;
+            "lucid-server-search": LocalJSX.LucidServerSearch & JSXBase.HTMLAttributes<HTMLLucidServerSearchElement>;
             "lucid-server-table": LocalJSX.LucidServerTable & JSXBase.HTMLAttributes<HTMLLucidServerTableElement>;
             "lucid-server-table-data": LocalJSX.LucidServerTableData & JSXBase.HTMLAttributes<HTMLLucidServerTableDataElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;

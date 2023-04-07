@@ -38,7 +38,7 @@ export class LucidServerSearch {
     this.store = new ServerTableSearchStore({ uid: this.providerId, updateState })
   }
 
-  disconnectedCallback(): void {
+  disconnectedCallback (): void {
     if (this.searchDebounceTimer != null) {
       clearTimeout(this.searchDebounceTimer)
     }
@@ -87,7 +87,7 @@ export class LucidServerSearch {
     return this.isMac ? '⌘K' : 'Ctl+K'
   }
 
-  setFocus(focused: boolean): void {
+  setFocus (focused: boolean): void {
     this.inputFocused = focused
   }
 
@@ -97,7 +97,7 @@ export class LucidServerSearch {
     }
   }
 
-  focusInput(): void {
+  focusInput (): void {
     const input = this.host.shadowRoot.querySelector<HTMLInputElement>('#search')
     input.focus()
   }

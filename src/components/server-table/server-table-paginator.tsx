@@ -53,7 +53,10 @@ export class LucidServerPaginator {
         <div class='hidden sm:block'>
           <p class='text-sm text-slate-700'> Showing <span class='font-medium'>{this.state.paging.skip + 1}</span> to <span class='font-medium'>{this.state.paging.skip + this.state.paging.limit}</span> of <span class='font-medium'>{this.state.count}</span> results </p>
         </div>
-        <div class='flex flex-1 justify-between sm:justify-end'>
+        <div class='flex flex-1 justify-between sm:justify-end gap-3'>
+
+          {/* <lucid-button preset='secondary' disabled={this.disabledPrevious} onClick={() => this.store.performPaging({ skip: Math.max(this.state.paging.skip - this.state.paging.limit, 0), limit: this.state.paging.limit })} label='Previous' />
+          <lucid-button preset='secondary' disabled={this.disabledNext} onClick={() => this.store.performPaging({ skip: this.state.paging.skip + this.state.paging.limit, limit: this.state.paging.limit })} label='Next' /> */}
           {/* TODO: replace with lucid button once it is done */}
           <a
             class='relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-slate-900 ring-1 ring-inset ring-slate-300 hover:bg-slate-50 focus-visible:outline-offset-0 cursor-pointer'
@@ -61,8 +64,6 @@ export class LucidServerPaginator {
           >
             Previous
           </a>
-
-          {/* TODO: replace with lucid button once it is done */}
           <a
             class='relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-slate-900 ring-1 ring-inset ring-slate-300 hover:bg-slate-50 focus-visible:outline-offset-0 cursor-pointer'
             onClick={() => !this.disabledNext && this.store.performPaging({ skip: this.state.paging.skip + this.state.paging.limit, limit: this.state.paging.limit })}

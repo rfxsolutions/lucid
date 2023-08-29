@@ -1,5 +1,5 @@
 import { Config } from '@stencil/core'
-import tailwind from 'stencil-tailwind-plugin'
+import tailwind, { tailwindHMR } from 'stencil-tailwind-plugin'
 import tailwindConf from './tailwind.config'
 export const config: Config = {
   namespace: 'lucid',
@@ -18,13 +18,18 @@ export const config: Config = {
     {
       type: 'www',
       baseUrl: 'http://localhost:3333',
-      serviceWorker: null // disable service workers
+      serviceWorker: null, // disable service workers,
+      copy: [
+        { src: 'pages' },
+        { src: 'css' }
+      ]
     }
   ],
   plugins: [
     tailwind({
       tailwindConf: tailwindConf as any
-    })
+    }),
+    tailwindHMR()
   ],
   devServer: {
     reloadStrategy: 'pageReload'

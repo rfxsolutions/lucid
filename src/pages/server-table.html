@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Lucid Server Table</title>
+    <script type="module" src="/build/lucid.esm.js"></script>
+    <script nomodule src="/build/lucid.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/css/tailwind.css"> -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-blue-500">
+    <div class="w-52 ml-6">
+      <lucid-server-search provider-id="rick-and-morty-table" label="Quick search" placeholder="Search Characters" autofocus show-hotkey></lucid-server-search>
+    </div>
+    <div class="w-5/6 ml-6 my-6">
+      <lucid-server-table provider-id="rick-and-morty-table">
+        <template name="custom-avatar.data" data-mapper="lucid-avatar:url:image">
+          <lucid-avatar/>
+        </template>
+        <template name="custom-avatar.header">
+          <h1>Image</h1>
+        </template>
+        <lucid-server-paginator slot="paginator" provider-id="rick-and-morty-table"></lucid-server-paginator>
+      </lucid-button-server-table>
+      <lucid-server-table-data provider-id="rick-and-morty-table"></lucid-button-server-table-data>
+    </div>
+  </body>
+</html>

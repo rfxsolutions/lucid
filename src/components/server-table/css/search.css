@@ -1,0 +1,12 @@
+input{
+  position:absolute;
+  top:20px;
+ }
+ input ~ span{
+  transition:top .7s ease;
+  position:absolute;
+  top:20px;
+ }
+ input:focus ~ span{
+  top:0px;
+ }
